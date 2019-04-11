@@ -8,15 +8,10 @@ import ShotChart from "./components/ShotChart"
 
 const mapStateToProps = state => {
   return {
-    player: state.player
+    players: state.player
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchPlayer: () => dispatch(fetchPlayer())
-  }
-}
 class App extends Component {
 
   componentDidMount = () => {
@@ -35,4 +30,4 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, { fetchPlayer })(App);
