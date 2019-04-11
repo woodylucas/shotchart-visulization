@@ -4,7 +4,7 @@ import './App.css';
 import { connect } from 'react-redux'
 import { fetchPlayers, fetchPlayer } from './redux/actions'
 import ShotChart from "./components/ShotChart"
-
+import SearchBar from "./components/SearchBar"
 
 const mapStateToProps = state => {
   return {
@@ -23,16 +23,16 @@ class App extends Component {
     this.props.fetchPlayer()
   }
   render() {
-    const { player } = this.props
-
     return (
       <div className="App" >
         <h1>React & D3 dashboard</h1>
         <h2>Basketball court</h2>
+        <SearchBar />
         <ShotChart />
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+export default connect(mapStateToProps, { fetchPlayer } )(App);
