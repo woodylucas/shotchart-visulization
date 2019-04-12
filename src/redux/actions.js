@@ -21,9 +21,9 @@ const loadPlayer = player => {
 
 
 
-export const fetchPlayer = () => {
+export const fetchPlayer = (playerId) => {
   return (dispatch) => {
-    return fetch(`http://localhost:3000/players/201939?season="2017-18"`)
+    return fetch(`http://localhost:3000/players/${playerId}?season="2017-18"`)
     .then(resp => resp.json())
     .then(player => {
       console.log("fetchPlayer:", player)

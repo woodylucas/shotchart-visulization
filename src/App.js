@@ -8,20 +8,24 @@ import SearchBar from "./components/SearchBar"
 
 const mapStateToProps = state => {
   return {
-    player: state.player
+    player: state.player,
+    players: state.players
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchPlayer: () => dispatch(fetchPlayer())
+    fetchPlayer: () => dispatch(fetchPlayer()),
+    fetchPlayers: () => dispatch(fetchPlayers())
   }
 }
 class App extends Component {
 
   componentDidMount = () => {
-    this.props.fetchPlayer()
+    // this.props.fetchPlayer()
+    this.props.fetchPlayers()
   }
+
   render() {
     return (
       <div className="App" >
@@ -35,4 +39,4 @@ class App extends Component {
 }
 
 
-export default connect(mapStateToProps, { fetchPlayer } )(App);
+export default connect(mapStateToProps, mapDispatchToProps )(App);

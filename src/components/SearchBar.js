@@ -1,19 +1,39 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { fetchPlayers, fetchPlayer } from '../redux/actions'
 
 class SearchBar extends React.Component {
 
-  // changeHandler = () => {
-  //   const event.target.value
+  state = {
+    value: ""
+  }
+
+
+  // componentDidMount =() => {
+  //   this.props.fetchPlayers()
   // }
 
+  searchHandler = (event) => {
+    this.setState({value: event.target.value})
+  }
+
+  submitHandler = (event) => {
+    event.preventDefault()
+    // debugger
+    const foundPlayer = this.props.players.filter(player => player.display_name.toLowerCase().includes(this.state.value));
+    this.props.fetchPlayer(foundPlayer[0].nba_id)
+  }
+
+
   render() {
-    console.log(this.props.players);
+    console.log('all player:',this.props.players);
     return(
       <div>
-        <form className="search">
+        <form className="search" onSubmit={ this.submitHandler }>
           <input
             placeholder="Search for...."
+            value={ this.state.value }
+            onChange={this.searchHandler}
           />
         </form>
       </div>
@@ -22,8 +42,17 @@ class SearchBar extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { players: state.players }
+  return {
+    player: state.player,
+    players: state.players
+   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchPlayers: () => dispatch(fetchPlayers()),
+    fetchPlayer: (playerId) => dispatch(fetchPlayer(playerId))
+  }
+}
 
-export default connect(mapStateToProps)(SearchBar)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
