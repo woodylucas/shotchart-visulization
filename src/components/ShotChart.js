@@ -2,8 +2,10 @@ import React from 'react'
 import * as d3 from  "d3"
 import { hexbin } from "d3-hexbin";
 import { court, shots } from "d3-shotchart"
+import nba from "nba";
 import { connect }  from "react-redux"
 window.d3_hexbin = {hexbin : hexbin} // hexbin library issue
+
 
 
 class ShotChart extends React.Component {
@@ -15,11 +17,11 @@ class ShotChart extends React.Component {
       y: (shot.loc_y + 55) / 10,
       action_type: shot.action_type,
       shot_distance: shot.shot_distance,
-      shot_made_flag: shot.shot_made_flag
+      shot_made_flag: shot.shot_made_flag,
     })
     )
     const courtSelection = d3.select("#shot-chart");
-    const player_court = court().width(500);
+    const player_court = court().width(600);
     const player_shots = shots()
                     .shotRenderThreshold(1)
                     .displayToolTips(true)
