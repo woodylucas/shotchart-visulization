@@ -21,7 +21,8 @@ class ShotChart extends React.Component {
     })
     )
     const courtSelection = d3.select("#shot-chart");
-    const player_court = court().width(600);
+    courtSelection.html('');
+    const player_court = court().width(700);
     const player_shots = shots()
                     .shotRenderThreshold(1)
                     .displayToolTips(true)

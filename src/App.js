@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { fetchPlayers, fetchPlayer } from './redux/actions'
 import ShotChart from "./components/ShotChart"
 import SearchBar from "./components/SearchBar"
+import ButtonAppBar from "./components/ButtonAppBar"
+
 
 const mapStateToProps = state => {
   return {
@@ -29,8 +31,9 @@ class App extends Component {
   render() {
     return (
       <div className="App" >
-        <h1>React & D3 dashboard</h1>
-        <h2>Basketball court</h2>
+        <ButtonAppBar />
+        <h1>Detailed visualization</h1>
+        <h1>NBA shot selection</h1>
         <SearchBar />
         <ShotChart />
       </div>

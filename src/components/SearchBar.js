@@ -1,20 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchPlayers, fetchPlayer } from '../redux/actions'
-import { AutoComplete, Input, Icon } from "antd";
-import { PROFILE_PIC_URL_PREFIX, DEFAULT_PLAYER_INFO } from "../constants";
+import { PROFILE_PIC_URL_PREFIX, TEAM_PIC_URL_PREFIX  } from "../constants";
 import ReactModal from 'react-modal';
-
-console.log(DEFAULT_PLAYER_INFO)
-
-const Option = AutoComplete.Option;
 
 class SearchBar extends React.Component {
 
   state = {
     value: "",
     foundPlayer: [],
-    isOpen: false
+    isOpen: false,
   }
 
   changeHandler = (event) => {
@@ -46,9 +41,8 @@ class SearchBar extends React.Component {
 
 
   render() {
-    const { foundPlayer } = this.state
-    const { isOpen } = this.state
-    const playerStats = foundPlayer.map(player =>  player.display_name )
+    const { isOpen, foundPlayer, playerInfo } = this.state
+    const playerName = foundPlayer.map(player =>  player.display_name )
     const playerImage = foundPlayer.map(player =>  <img key={player.nba_id} src={ `${PROFILE_PIC_URL_PREFIX}/${player.nba_id}.png`} alt="playerPic" />)
     const customStyles = {
   content : {
@@ -79,7 +73,8 @@ class SearchBar extends React.Component {
         >
           { playerImage }
           <h2>2017-2018</h2>
-          <h2>{playerStats}</h2>
+          <h2>{playerName}</h2>
+
         </ReactModal>
       </div>
     )
