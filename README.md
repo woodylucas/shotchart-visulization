@@ -5,6 +5,7 @@ Welcome to Swish! This is a website for fans all alike to check the status of th
 In the project directory, you can run:
 
 ### Demo Video
+https://youtu.be/uGzcjj52d5k
 
 ### Select Your Player 
 
