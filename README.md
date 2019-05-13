@@ -1,5 +1,7 @@
 ## Swish 
 
+Build Status Windows Build Status js-standard-style
+
 Welcome to Swish! This is a website for fans all alike to check the status of their current NBA player, and how he shoots for the field. 
 
 In the project directory, you can run:
